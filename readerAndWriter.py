@@ -57,15 +57,26 @@ def inFile(fileName, array):
             tweetArray.append(line)
     return tweetArray
     
-# Testing
+# List of All Public Figures Topics
 topicsArray = readFile('Public Figures Topics.txt')
-# Dev Tweets
-topicsTweetsArray = inFile('data/cleaned/devGold3pt.tsv', topicsArray)
-writeToFile2('PFTweetsDev.txt', topicsTweetsArray)  
-# Train Tweets
-topicsTweetsArray = inFile('data/cleaned/trainGold3pt.tsv', topicsArray)
-writeToFile2('PFTweetsTrain.txt', topicsTweetsArray)  
-# Test Tweets 
-topicsTweetsArray = inFile('data/cleaned/devtestGold3pt.tsv', topicsArray)
-writeToFile2('PFTweetsTest.txt', topicsTweetsArray)  
-      
+# All Tweets Data Set
+topicsTweetsArray = inFile('data/cleaned/allTopics3pt.tsv', topicsArray)
+writeToFile2('PFTweets.txt', topicsTweetsArray)  
+
+# List of just Politicians Topics
+topicsArray = readFile('Politicians Topics.txt')
+# All Tweets Data Set
+topicsTweetsArray = inFile('data/cleaned/allTopics3pt.tsv', topicsArray)
+writeToFile2('PoliTweets.txt', topicsTweetsArray)  
+
+# List of just Entertainers Topics
+topicsArray = readFile('Entertainers Topics.txt')
+# All Tweets Data Set
+topicsTweetsArray = inFile('data/cleaned/allTopics3pt.tsv', topicsArray)
+writeToFile2('EntTweets.txt', topicsTweetsArray)  
+
+# List of just Athletes Topics
+topicsArray = readFile('Athletes Topics.txt')
+# All Tweets Data Set
+topicsTweetsArray = inFile('data/cleaned/allTopics3pt.tsv', topicsArray)
+writeToFile2('AthTweets.txt', topicsTweetsArray)  
