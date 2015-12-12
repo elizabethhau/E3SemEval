@@ -1,9 +1,7 @@
-import nltk
-
 '''
 Authors: Emily Ahn, Emily Chen, Elizabeth Hau
 Date created: 12/5/2015
-Last modified: 12/5/2015
+Last modified: 12/10/2015
 ****************************************************
 This is an initial run of using the Naive Bayes
 Classifier on the training gold dataset for training
@@ -11,17 +9,8 @@ and dev gold dataset for testing.
 The first run-through achieved an accuracy of 7.3%
 *****************************************************
 '''
-
-''' reads in a file given the file name as a parameter and 
-    returns the data as an array, where each line in the file
-    is an element in the array
-'''
-def readFile(fileName):
-    with open(fileName, "r") as myfile:
-        rawdata = myfile.readlines()
-        #print "rawdata",rawdata
-    data = [i.replace('\n','') for i in rawdata]
-    return data
+import nltk
+import readerAndWriter
     
 ''' reads in each tweet, stores and returns it in a list of
     tuples as (list of words, sentiment (score))
@@ -85,13 +74,13 @@ def extract_features(tweet):
 '''
 
 # TRAIN
-read = readFile("trainGold.tsv")
+read = readerAndWriter.readFile("data/cleaned/trainGold.tsv")
 dataForTweets = readTweets(read)
 training_set = nltk.classify.apply_features(extract_features, dataForTweets)
 classifier = nltk.NaiveBayesClassifier.train(training_set)
 
 # TEST
-testFile = readFile("devGold.tsv")
+testFile = readerAndWriter.readFile("data/cleaned/devGold.tsv")
 dataForTest = readTweets(testFile)
 test_set = nltk.classify.apply_features(extract_features, dataForTest)
 print "CLASSIFYING: ", nltk.classify.accuracy(classifier, test_set)
