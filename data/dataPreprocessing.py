@@ -8,6 +8,9 @@ This file contains all the data preprocessing
 '''
 
 import readerAndWriter
+from ttp import ttp
+import CMUTweetTagger
+#import twokenize 
 
 '''
 *************************************************************
@@ -60,7 +63,7 @@ def deleteUnavailable(array):
     print "# of all ids:",len(allIds)
     print "# of valid ids:",len(validIds)
     return endData
-
+'''
 print "\n********************* TRAIN GOLD **********************************"
 trainGoldReadResult = readerAndWriter.readFile("trainC5gold.tsv")
 trainGoldLen = len(trainGoldReadResult)
@@ -112,10 +115,10 @@ print "number of tweets in devtest input after removing 'not available' tweets:"
 
 devtestInputNumUnAvail = (devtestInputLen-devtestInputResultLen)
 print "Number of tweets unavailable in devtest input:", devtestInputNumUnAvail
-
+'''
 
 ''' create new .tsv files to actually use for training, dev, and devtest '''
-
+'''
 print "\n************************* CHECK LENGTH OF NEW FILES *********************"
 
 # train
@@ -140,7 +143,7 @@ print "length of new devtest input file(1794):",len(devtestInput)
 
 # file with all topics and tweets
 result = trainGoldResult + devGoldResult + devtestGoldResult
-
+'''
 ''' 
     The below writeToFile call to 'allTopics.tsv' was meant to only be called once
     Don't uncomment!
@@ -174,7 +177,7 @@ def collapseScales(originalData):
             line[2] = str(1)
         newFile.append(line)
     return newFile 
-
+'''
 originalFile = readerAndWriter.readFile("cleaned/allTopics.tsv")
 result = collapseScales(originalFile)
 readerAndWriter.writeToFile("cleaned/allTopics3pt.tsv",result)
@@ -190,3 +193,28 @@ readerAndWriter.writeToFile("cleaned/devGold3pt.tsv", devReadResult)
 originalDevtest = readerAndWriter.readFile("cleaned/devtestGold.tsv")
 devtestReadResult = collapseScales(originalDevtest)
 readerAndWriter.writeToFile("cleaned/devtestGold3pt.tsv", devtestReadResult)
+'''
+'''
+*************************************************************
+This section of the file parses the raw tweet
+*************************************************************
+'''
+p = ttp.Parser()
+result = p.parse("@Microsoft 2nd computer with same error!!! #Windows10fail Guess we will shelve this until SP1! http://t.co/QCcHlKuy8Q")
+print result.reply
+#print result
+print result.users
+print result.tags
+print result.urls
+#print result.html
+print result.lists
+#p = ttp.Parser(include_spans=True)
+#result = p.parse("@burnettedmond, you now support #IvoWertzel's tweet parser! https://github.com/edburnett/")
+#print result.urls
+#print result.lists
+#print result.tags
+
+#twokenize.simpleTokenize("@burnettedmond, you now support #IvoWertzel's tweet parser! https://github.com/edburnett/ @butthead"))
+result = CMUTweetTagger.runtagger_parse("@Microsoft 2nd computer with same error!!! #Windows10fail Guess we will shelve this until SP1! http://t.co/QCcHlKuy8Q")
+print result
+print CMUTweetTagger.runtagger_parse(['example tweet 1', 'example tweet 2'])
