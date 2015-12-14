@@ -11,3 +11,4 @@ print "find_all:", af.find_all(text1) #['excellent']
 print text2, ":", af_emoticon.score(text2) #score = -2.0
 print text3, ":", af.score(text3)
 print "find_all:", af.find_all(text3) #['excellent']
+print "the", af.score("the")
