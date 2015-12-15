@@ -17,7 +17,7 @@ containing the data.
 def readFile(fileName):
     with open(fileName, "r") as myfile:
         rawdata = myfile.readlines()
-    data = [i.replace('\n','').lower() for i in rawdata]
+    data = [i.replace('\n','') for i in rawdata]
     return data
 
 '''
@@ -58,25 +58,33 @@ def inFile(fileName, array):
     return tweetArray
     
 # List of All Public Figures Topics
-topicsArray = readFile('Public Figures Topics.txt')
+topicsArray = readFile('data/Public Figures Topics.txt')
+print len(topicsArray)
+topicsLower = [topic.lower() for topic in topicsArray]
+train = topicsLower[:36]
+print "train:\n", train
+test = topicsLower[36:]
+print "test:\n",test
 # All Tweets Data Set
-topicsTweetsArray = inFile('data/cleaned/allTopics3pt.tsv', topicsArray)
-writeToFile2('PFTweets.txt', topicsTweetsArray)  
+trainTweets = inFile('data/cleaned/allTopics3pt.tsv', train)
+testTweets = inFile('data/cleaned/allTopics3pt.tsv', test)
+writeToFile2('data/cleaned/PFTweetsTrain.txt', trainTweets)  
+writeToFile2('data/cleaned/PFTweetsTest.txt', testTweets)  
 
 # List of just Politicians Topics
-topicsArray = readFile('Politicians Topics.txt')
-# All Tweets Data Set
-topicsTweetsArray = inFile('data/cleaned/allTopics3pt.tsv', topicsArray)
-writeToFile2('PoliTweets.txt', topicsTweetsArray)  
+#topicsArray = readFile('Politicians Topics.txt')
+## All Tweets Data Set
+#topicsTweetsArray = inFile('data/cleaned/allTopics3pt.tsv', topicsArray)
+#writeToFile2('data/cleaned/PoliTweets.txt', topicsTweetsArray)  
 
 # List of just Entertainers Topics
-topicsArray = readFile('Entertainers Topics.txt')
-# All Tweets Data Set
-topicsTweetsArray = inFile('data/cleaned/allTopics3pt.tsv', topicsArray)
-writeToFile2('EntTweets.txt', topicsTweetsArray)  
+#topicsArray = readFile('Entertainers Topics.txt')
+## All Tweets Data Set
+#topicsTweetsArray = inFile('data/cleaned/allTopics3pt.tsv', topicsArray)
+#writeToFile2('data/cleaned/EntTweets.txt', topicsTweetsArray)  
 
 # List of just Athletes Topics
-topicsArray = readFile('Athletes Topics.txt')
-# All Tweets Data Set
-topicsTweetsArray = inFile('data/cleaned/allTopics3pt.tsv', topicsArray)
-writeToFile2('AthTweets.txt', topicsTweetsArray)  
+#topicsArray = readFile('Athletes Topics.txt')
+## All Tweets Data Set
+#topicsTweetsArray = inFile('data/cleaned/allTopics3pt.tsv', topicsArray)
+#writeToFile2('data/cleaned/AthTweets.txt', topicsTweetsArray)  
