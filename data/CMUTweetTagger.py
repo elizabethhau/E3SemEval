@@ -175,14 +175,20 @@ if __name__ == "__main__":
         #    print cleanTweet
         #    result.append(cleanTweet)
         #print result
-        readResults = readerAndWriter.readFile("cleaned/PFTweets.txt")
+        #readResults = readerAndWriter.readFile("cleaned/PFTweets.txt")
+        readTrain = readerAndWriter.readFile("cleaned/PFTweetsTrain.txt")
+        readTest = readerAndWriter.readFile("cleaned/PFTweetsTest.txt")
         #print "read results\n",readResults
         print "\n DONE READING \n"
         #print "\nclean tweet\n",cleanTweet(tweets)
-        replacedResults = replaceTaggedTweet(readResults)
+        #replacedResults = replaceTaggedTweet(readResults)
+        taggedTrain = replaceTaggedTweet(readTrain)
+        taggedTest = replaceTaggedTweet(readTest)
         print "\n DONE REPLACING \n"
         #print "\nreplace tagged tweet\t",replacedResults
         #np.savetxt("cleaned/testCleaned.txt",replacedResults)
-        toFile("cleaned/PFTweetsCleaned.txt",replacedResults)
+        #toFile("cleaned/PFTweetsCleaned.txt",replacedResults)
+        toFile("cleaned/PFTrainTag.txt", taggedTrain)
+        toFile("cleaned/PFTestTag.txt", taggedTest)
         print "\n DONE WRITING \n"
             
