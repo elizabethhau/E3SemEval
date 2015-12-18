@@ -2,16 +2,12 @@
 * E3 SemEval 2016: Sentiment Analysis on Twitter     *
 *                                                    *
 * CS 232 Artificial Intelligence Final Project       *
+*               Fall 2015                            *
+*     Emily Ahn, Emily Chen, Elizabeth Hau           *
 *                                                    *
-*		         Fall 2015			                         *
-*							                                       *
-* 	Emily Ahn, Emily Chen, Elizabeth Hau		         *   
-*							                                       *
-*   https://github.com/elizabethhau/E3SemEval/       *
-*                       				                     *
+* https://github.com/elizabethhau/E3SemEval/         *
 *                                                    *
 ******************************************************
-
 DIRECTORIES:
 
 ark-tweet-nlp-0.3.2 —> directory that contains the code for the tweet tagger and the jar file that we needed to tag the tweets
