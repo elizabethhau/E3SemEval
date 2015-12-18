@@ -3,12 +3,12 @@
 *                                                    *
 * CS 232 Artificial Intelligence Final Project       *
 *                                                    *
-*		Fall 2015				*
-*							*
-* 	Emily Ahn, Emily Chen, Elizabeth Hau		*   
-*							*
+*		         Fall 2015			                         *
+*							                                       *
+* 	Emily Ahn, Emily Chen, Elizabeth Hau		         *   
+*							                                       *
 *   https://github.com/elizabethhau/E3SemEval/       *
-*                       				*
+*                       				                     *
 *                                                    *
 ******************************************************
 
